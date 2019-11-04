@@ -1,5 +1,6 @@
-# Just home project
+Just simple home project:
+#
+Tech Stack:
 
-# Tech Stack: 
-## **Spring Boot**, **Gradle**, **PostgreSQL**, **Docker**, **LiquiBase**, **TestNG**, **Angular JS**
+Spring Boot, Gradle, PostgreSQL, Docker, LiquiBase, TestNG, Angular JS
 
