@@ -1,0 +1,70 @@
+import java.time.LocalDate
+
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+
+    group = 'kz.example.jupiter'
+    version = '0.0.1'
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+    }
+
+    test.useTestNG()
+    idea.module.downloadSources = true
+    idea.module.downloadJavadoc = true
+    idea.module.inheritOutputDirs = false
+    idea.module.outputDir = file("$buildDir/classes/main")
+    idea.module.testOutputDir = file("$buildDir/classes/test")
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    [compileJava, compileTestJava]*.options*.debugOptions*.debugLevel = "source,lines,vars"
+
+    sourceSets.main.java.srcDirs = ["src"]
+    sourceSets.test.java.srcDirs = ["test_src"]
+    sourceSets.main.resources.srcDirs = ["src_resources"]
+    sourceSets.test.resources.srcDirs = ["test_resources"]
+
+    sourceSets.main.resources {
+        srcDirs += sourceSets.main.java.srcDirs
+        exclude '**/*.java'
+    }
+
+    sourceSets.test.resources {
+        srcDirs += sourceSets.test.java.srcDirs
+        exclude '**/*.java'
+    }
+
+
+    jar {
+        manifest {
+            attributes 'Implementation-Title': project.name
+            attributes 'Implementation-Version': version
+            attributes 'Implementation-Vendor': "petproject"
+            attributes 'Created-By': System.getProperty("user.name")
+            attributes 'Created-At': new Date().format("yyyy-MM-dd/HH:mm:ss")
+        }
+    }
+}
+
+subprojects {
+    dependencies {
+        ext.getText1 = '0.0.0'
+
+        testCompile 'org.testng:testng:6.5.1'
+        testCompile 'org.easytesting:fest-assert-core:2.0M10'
+    }
+}
