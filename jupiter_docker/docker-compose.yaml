@@ -1,11 +1,11 @@
 version: '2'
 services:
-  postgres:
-    image: postgres:12
+  db:
+    image: mysql:5.7
     restart: always
     ports:
-      - "5432:5432"
+      - "3308:3306"
     environment:
-      POSTGRES_DB: jupiter
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: 1234
+      MYSQL_DATABASE: jupiter
+      MYSQL_USER: rootdb
+      MYSQL_ROOT_PASSWORD: rootdb

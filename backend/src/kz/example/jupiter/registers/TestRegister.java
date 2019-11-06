@@ -1,6 +1,10 @@
 package kz.example.jupiter.registers;
 
+import kz.example.jupiter.model.ClientRecord;
+
+import java.sql.SQLException;
+import java.util.List;
+
 public interface TestRegister {
-    String getText1();
-    String getText2();
+    List<ClientRecord> getClientList(String clientGroup) throws Exception;
 }
