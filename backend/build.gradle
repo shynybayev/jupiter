@@ -16,7 +16,6 @@ dependencies {
     compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.1'
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     providedCompile group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
-    // https://mvnrepository.com/artifact/kz.greetgo/greetgo.util
-    testCompile group: 'kz.greetgo', name: 'greetgo.util', version: '2.0.0'
-
+// https://mvnrepository.com/artifact/org.liquibase/liquibase-core
+    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.8.0'
 }
